@@ -8,35 +8,49 @@ using WayPointSystem;
 public class WayPointNavigator : MonoBehaviour
 {
 
-    OtherCarController otherCarController;
+    TrafficController trafficController;
     WayPoint CurrentWaypoint;
     GameObject WaypointRoot;
     int direction;
-    
+
     private void Awake()
     {
-        otherCarController = GetComponent<OtherCarController>();
-        WaypointRoot = GameObject.Find("WayPointRoot");
-        CurrentWaypoint= WaypointRoot.transform.GetChild(0).GetComponent<WayPoint>();
-        otherCarController.agent.speed = UnityEngine.Random.Range(10f, 15f);
+        trafficController = GetComponent<TrafficController>();
+
+        if (trafficController.agent.agentTypeID == 0)
+        {
+            WaypointRoot = GameObject.Find("WayPointPedestrian");
+            trafficController.agent.speed = UnityEngine.Random.Range(1f, 2f);
+
+        }
+        else
+        {
+            WaypointRoot = GameObject.Find("WayPointRoot");
+            trafficController.agent.speed = UnityEngine.Random.Range(10f, 15f);
+
+        }
+        CurrentWaypoint = WaypointRoot.transform.GetChild(0).GetComponent<WayPoint>();
+
     }
     private void Start()
     {
-        otherCarController.agent.SetDestination(CurrentWaypoint.GetPosition());
-        direction=Mathf.RoundToInt(UnityEngine.Random.Range(0f,1f));
+        trafficController.agent.SetDestination(CurrentWaypoint.GetPosition());
+        direction = Mathf.RoundToInt(UnityEngine.Random.Range(0f, 1f));
+        //  trafficController.agent.avoidance
+        NavMesh.avoidancePredictionTime = 0.5f;
     }
 
     private void Update()
     {
 
-        float dist = otherCarController.agent.remainingDistance;
-     
-        if (dist != Mathf.Infinity && otherCarController.agent.pathStatus == NavMeshPathStatus.PathComplete && otherCarController.agent.remainingDistance <= 3f)
+        float dist = trafficController.agent.remainingDistance;
+
+        if (dist != Mathf.Infinity && trafficController.agent.pathStatus == NavMeshPathStatus.PathComplete && trafficController.agent.remainingDistance <= 3f)
         {
             bool shouldBransh = false;
-            if (CurrentWaypoint.branches != null&&CurrentWaypoint.branches.Count>0)
+            if (CurrentWaypoint.branches != null && CurrentWaypoint.branches.Count > 0)
             {
-                shouldBransh=UnityEngine.Random.Range(0f,1f)<=CurrentWaypoint.branchRatio?true:false;
+                shouldBransh = UnityEngine.Random.Range(0f, 1f) <= CurrentWaypoint.branchRatio ? true : false;
             }
 
             if (shouldBransh)
@@ -47,7 +61,7 @@ public class WayPointNavigator : MonoBehaviour
             {
                 if (CurrentWaypoint.NextWayPointl == null)
                 {
-                    CurrentWaypoint=CurrentWaypoint.PreviousWayPointl;
+                    CurrentWaypoint = CurrentWaypoint.PreviousWayPointl;
                     direction = 1;
                 }
                 else
@@ -65,12 +79,47 @@ public class WayPointNavigator : MonoBehaviour
                 }
                 else
                 {
-                    
+
                     CurrentWaypoint = CurrentWaypoint.PreviousWayPointl;
                 }
             }
-            otherCarController.agent.SetDestination(CurrentWaypoint.GetPosition());
+            Debug.Log(trafficController.agent.velocity.magnitude + "   " + transform.GetSiblingIndex());
+            // SolveStuck();
+       /*     if (trafficController.agent.velocity.magnitude < 2f && trafficController.agent.hasPath)
+            {
+                direction=(direction == 0) ? 1 : 0;
+                Debug.Log("I'm stuck");
+            }
+            else
+            {*/
+                trafficController.agent.SetDestination(CurrentWaypoint.GetPosition());
+         //   }
+        }
 
+    }
+    IEnumerator SolveStuck()
+    {
+        Vector3 lastPosition = this.transform.position;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(3f);
+
+            //Maybe we can also use agent.velocity.sqrMagnitude == 0f or similar
+            if (!trafficController.agent.pathPending && trafficController.agent.hasPath && trafficController.agent.remainingDistance > trafficController.agent.stoppingDistance)
+            {
+                Vector3 currentPosition = this.transform.position;
+                if (Vector3.Distance(currentPosition, lastPosition) < 1f)
+                {
+                    Vector3 destination = trafficController.agent.destination;
+                    trafficController.agent.ResetPath();
+                    trafficController.agent.SetDestination(destination);
+                    Debug.Log("Agent Is Stuck");
+                }
+                Debug.Log("Current Position " + currentPosition + " Last Position " + lastPosition);
+                lastPosition = currentPosition;
+            }
         }
     }
+
 }

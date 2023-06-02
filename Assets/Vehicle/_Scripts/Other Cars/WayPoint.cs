@@ -10,7 +10,7 @@ namespace WayPointSystem
         public WayPoint NextWayPointl;
 
         [Range(0f, 15f)]
-        public float Width = 10f;
+        public float Width = 1f;
         [Range(0f, 1f)]
         public float branchRatio=0.5f;
         public List<WayPoint> branches = new List<WayPoint>();
