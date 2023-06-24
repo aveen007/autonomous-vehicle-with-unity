@@ -30,14 +30,15 @@ public class WayPointNavigator : MonoBehaviour
 
         }
         CurrentWaypoint = WaypointRoot.transform.GetChild(0).GetComponent<WayPoint>();
-
+        NavMesh.avoidancePredictionTime = 0.5f;
+        NavMesh.pathfindingIterationsPerFrame = 5000;
     }
     private void Start()
     {
         trafficController.agent.SetDestination(CurrentWaypoint.GetPosition());
         direction = Mathf.RoundToInt(UnityEngine.Random.Range(0f, 1f));
         //  trafficController.agent.avoidance
-        NavMesh.avoidancePredictionTime = 0.5f;
+      
     }
 
     private void Update()

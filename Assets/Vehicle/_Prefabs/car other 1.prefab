@@ -382,7 +382,6 @@ GameObject:
   - component: {fileID: 7920871363033467661}
   - component: {fileID: 7920871363033467125}
   - component: {fileID: 7920871363033467122}
-  - component: {fileID: 7920871363033467124}
   - component: {fileID: 4847438035562888128}
   m_Layer: 7
   m_Name: car other 1
@@ -509,7 +508,7 @@ NavMeshAgent:
   m_Height: 2.8018847
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &7920871363033467122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,22 +522,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7920871363033467125}
---- !u!208 &7920871363033467124
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7920871363033467656}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.0300001, y: 0.614, z: 2.41}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0, y: 0.786, z: -0.019000001}
-  m_TimeToStationary: 0.5
 --- !u!114 &4847438035562888128
 MonoBehaviour:
   m_ObjectHideFlags: 0
