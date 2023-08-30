@@ -19,7 +19,8 @@ From the simulator side, a city is created with a custom car physics based on si
 - brakes
 - slipping
 - friction
-![Picture1](https://github.com/aveen007/autonomous-vehicle-with-unity/assets/73739296/f3318a2e-1d3f-40d7-8d45-b2b2f55067cb)
+![image](https://github.com/aveen007/autonomous-vehicle-with-unity/assets/73739296/fa9a7b1c-31a9-4608-a213-1e3d17ae0aba)
+
 Animation curves were used for a hyperrealistic feel and extra control over the car.
 
 The city simulation was enhanced with a traffic system that was implemented through a waypoint tool created to easily add and remove waypoints and branching at road crossings to increase randomness as well having different directions and speeds of the traffic objects.
@@ -40,7 +41,9 @@ The city simulation was enhanced with a traffic system that was implemented thro
 - DQN algorithm is used for car control (throttle/steering)
 - Two models tested and results compared for LIDAR data and LIDAR data inhanced with specially processed CLRNet data from camera images.
 - Reward function suggested and tested.
-![image](https://github.com/aveen007/autonomous-vehicle-with-unity/assets/73739296/b5a62238-c49b-485e-ad96-7d78bdfd4ab5)
+- Learning from demonstrations is implemented through adding experiences to the replay memory, architecture of the network shown below
+
+![image](https://github.com/aveen007/autonomous-vehicle-with-unity/assets/73739296/2da26b10-0a68-4f64-8cb4-1d5c9e8ab22c)
 
 # UI and Custom side channels
 
@@ -49,10 +52,20 @@ The city simulation was enhanced with a traffic system that was implemented thro
 - Car speed and steer and both the cost and reward are sent from unity to the PLL API for easy training and tracking in tensorboard.
 
 # Demo
-- You can view the city at ![Video](https://www.youtube.com/watch?v=dLL61kv3VtI) 
-- UI for YOLOv8 in unity  ![Video](https://www.youtube.com/watch?v=dLL61kv3VtI)
-- CLRNet in unity  ![Video](https://www.youtube.com/watch?v=jcJKDtwVbVY)
-- DQN algorithm for LIDAR data with Image data from CLRNet  ![Video](https://www.youtube.com/watch?v=nSKgw1XCndI1)
+- You can view the city at
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=dLL61kv3VtI"><img src="https://www.youtube.com/watch?v=dLL61kv3VtI/0.jpg" alt="car"></a>
+</div>
+- UI for YOLOv8 in unity  <div align="center">
+  <a href="https://www.youtube.com/watch?v=dLL61kv3VtI"><img src="https://www.youtube.com/watch?v=dLL61kv3VtI/0.jpg" alt="car"></a>
+</div>
+- CLRNet in unity  <div align="center">
+  <a href="https://www.youtube.com/watch?v=jcJKDtwVbVY"><img src="https://www.youtube.com/watch?v=jcJKDtwVbVY/0.jpg" alt="car"></a>
+</div>
+- DQN algorithm for LIDAR data with Image data from CLRNet <div align="center">
+  <a href="https://www.youtube.com/watch?v=nSKgw1XCndI1"><img src="https://www.youtube.com/watch?v=nSKgw1XCndI1/0.jpg" alt="car"></a>
+</div> 
 
 
 ## Acknowledgements
