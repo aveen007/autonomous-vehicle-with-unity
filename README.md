@@ -51,19 +51,23 @@ The city simulation was enhanced with a traffic system that was implemented thro
 - Car speed and steer are visualized in the UI as well as a minimap from the observer POV.
 - Car speed and steer and both the cost and reward are sent from unity to the PLL API for easy training and tracking in tensorboard.
 
-# Demo
-You can view the city at <div align="center">
-  <a href="https://www.youtube.com/watch?v=dLL61kv3VtI"><img src="https://www.youtube.com/watch?v=dLL61kv3VtI/0.jpg" alt="car"></a>
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=dLL61kv3VtI">
+    <img src="https://img.youtube.com/vi/dLL61kv3VtI/0.jpg" alt="YOLOv8 UI in Unity">
+  </a>
 </div>
-UI for YOLOv8 in unity  <div align="center">
-  <a href="https://www.youtube.com/watch?v=dLL61kv3VtI"><img src="https://www.youtube.com/watch?v=dLL61kv3VtI/0.jpg" alt="car"></a>
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=jcJKDtwVbVY">
+    <img src="https://img.youtube.com/vi/jcJKDtwVbVY/0.jpg" alt="CLRNet in Unity">
+  </a>
 </div>
-CLRNet in unity  <div align="center">
-  <a href="https://www.youtube.com/watch?v=jcJKDtwVbVY"><img src="https://www.youtube.com/watch?v=jcJKDtwVbVY/0.jpg" alt="car"></a>
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=nSKgw1XCndI1">
+    <img src="https://img.youtube.com/vi/nSKgw1XCndI/0.jpg" alt="DQN with LIDAR + CLRNet">
+  </a>
 </div>
-DQN algorithm for LIDAR data with Image data from CLRNet <div align="center">
-  <a href="https://www.youtube.com/watch?v=nSKgw1XCndI1"><img src="https://www.youtube.com/watch?v=nSKgw1XCndI1/0.jpg" alt="car"></a>
-</div> 
 
 
 ## Acknowledgements
